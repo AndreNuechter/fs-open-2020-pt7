@@ -1,0 +1,52 @@
+body {
+    margin: 40px 16px;
+}
+
+button {
+    display: block;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    width: 16rem;
+}
+
+.toast {
+    padding: 8px 4px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+
+.error {
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.success {
+    border: 1px solid green;
+    background-color: rgba(0, 255, 0, 0.8);
+}
+
+.blogs-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.blog {
+    border: 1px solid black;
+    padding: 4px 8px;
+    margin-top: 4px;
+}
+
+.blog a {
+    display: block;
+}
+
+.blog__likes,
+.blog__user-details {
+    display: flex;
+    justify-content: space-between;
+}
