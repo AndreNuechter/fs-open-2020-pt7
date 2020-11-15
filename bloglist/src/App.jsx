@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
-import { init, logout, login } from './reducers/users.js';
+import { loadUserList } from './reducers/users.js';
+import { init, logout, login } from './reducers/user.js';
 import { load, add, like, del } from './reducers/blogs.js';
 import { notify } from './reducers/notification.js';
 import './App.css';
@@ -16,6 +17,7 @@ const App = () => {
     useEffect(() => {
         dispatch(init());
         dispatch(load());
+        dispatch(loadUserList());
     }, [dispatch]);
 
     const [cls, setCls] = useState('');

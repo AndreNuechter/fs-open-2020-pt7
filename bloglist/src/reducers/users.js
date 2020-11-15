@@ -1,15 +1,9 @@
-export default (state = {}, { type, data }) => {
+export default (state = [], { type, data }) => {
     switch (type) {
-        case 'LOGOUT':
-            return null;
-        case 'LOGIN':
-            return data;
-        case 'INIT':
+        case 'LOAD_USERS':
             return data;
         default:
             return state;
     }
 };
-export { default as init } from '../actions/init.js';
-export { default as login } from '../actions/login.js';
-export { default as logout } from '../actions/logout.js';
+export { default as loadUserList } from '../actions/load-user-list.js';

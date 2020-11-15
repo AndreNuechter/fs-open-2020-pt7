@@ -1,17 +1,45 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch, Route, Link
+} from "react-router-dom";
 import PropTypes from 'prop-types';
-import BlogsList from './BlogsList';
-import BlogCreationForm from './BlogCreationForm';
-import Togglable from './Togglable';
+import UsersList from './UsersList';
+import User from './User';
+import BlogArea from './BlogArea';
+import BlogDetails from './BlogDetails';
 
-const LoggedIn = ({ user, logOut, addBlog, likeBlog, deleteBlog, getRef }) => <div>
-    Logged in as {user.username}
-    <button onClick={logOut}>Log Out</button>
-    <Togglable labelOpen="Create Blog" ref={getRef()}>
-        <BlogCreationForm token={user.token} addBlog={addBlog} />
-    </Togglable>
-    <BlogsList likeBlog={likeBlog} deleteBlog={deleteBlog} user={user} />
-</div>;
+const padding = {
+    paddingRight: 5
+};
+
+const LoggedIn = ({ user, logOut, addBlog, likeBlog, deleteBlog, getRef }) => <Router>
+    <nav>
+        <span className="nav-links">
+            <Link to='/' style={padding}>Blogs</Link>
+            <Link to='/users' style={padding}>Users</Link>
+        </span>
+        <span className="nav-info">
+            <span>Logged in as {user.username}</span>
+            <button onClick={logOut}>Log Out</button>
+        </span>
+    </nav>
+
+    <Switch>
+        <Route path="/users/:id">
+            <User />
+        </Route>
+        <Route path="/users">
+            <UsersList />
+        </Route>
+        <Route path="/blogs/:id">
+            <BlogDetails user={user} addBlog={addBlog} likeBlog={likeBlog} deleteBlog={deleteBlog} />
+        </Route>
+        <Route path="/">
+            <BlogArea getRef={getRef} user={user} addBlog={addBlog} likeBlog={likeBlog} deleteBlog={deleteBlog} />
+        </Route>
+    </Switch>
+</Router>;
 
 LoggedIn.propTypes = {
     user: PropTypes.object.isRequired,

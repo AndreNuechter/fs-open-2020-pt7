@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import Blog from './Blog';
+import Blog from './BlogListItem';
 
 const BlogsList = ({ user, likeBlog, deleteBlog }) => {
     const blogs = useSelector(({ blogs }) => blogs);

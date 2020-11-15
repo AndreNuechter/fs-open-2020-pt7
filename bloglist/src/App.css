@@ -12,6 +12,29 @@ label {
     width: 16rem;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+}
+
+td {
+    text-align: right;
+}
+
+nav {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav button {
+    display: inline;
+}
+
 .toast {
     padding: 8px 4px;
     position: fixed;
