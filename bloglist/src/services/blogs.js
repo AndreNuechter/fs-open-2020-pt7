@@ -14,5 +14,8 @@ const like = id => axios
 const deleteBlog = (id, token) => axios
     .delete(`${baseUrl}/${id}`, { headers: { Authorization: `bearer ${token}` } })
     .then(response => response.data);
+const comment = (id, content) => axios
+    .post(`${baseUrl}/${id}/comments`, { content })
+    .then(response => response.data);
 
-export default { getAll, addOne, like, deleteBlog };
+export default { comment, getAll, addOne, like, deleteBlog };

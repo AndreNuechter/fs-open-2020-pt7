@@ -2,18 +2,18 @@ import React from 'react';
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
-export default ({ user, likeBlog, deleteBlog }) => {
+export default ({ user, likeBlog, deleteBlog, addComment }) => {
     const id = useParams().id;
     const blogs = useSelector(({ blogs }) => blogs);
     const blog = blogs.find(b => b.id === id);
 
     if (!blog) return <></>;
 
-    return <div className="blog" data-id={blog.id} data-likes={blog.likes}>
+    return <div className="blog__details" data-id={blog.id} data-likes={blog.likes}>
         <h2>{blog.title}</h2>
         by {blog.author || 'Anonymous'}
 
-        <div className="blog__details">
+        <div>
             <div className="blog__url-string">
                 <a href={blog.url}>{blog.url}</a>
             </div>
@@ -30,5 +30,17 @@ export default ({ user, likeBlog, deleteBlog }) => {
                 }
             </div>}
         </div>
+
+        <h2>Comments</h2>
+        <form onSubmit={addComment} data-blog-id={blog.id}>
+            <label className="comment-form">
+                <span>Add comment:</span>
+                <textarea name="comment"></textarea>
+            </label>
+            <button>Submit</button>
+        </form>
+        <ul>
+            {blog.comments.map(({ content, id }) => <li key={id}>{content}</li>)}
+        </ul>
     </div>;
 };

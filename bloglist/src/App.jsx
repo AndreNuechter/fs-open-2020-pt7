@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect, useRef } from 'react';
 import { loadUserList } from './reducers/users.js';
 import { init, logout, login } from './reducers/user.js';
-import { load, add, like, del } from './reducers/blogs.js';
+import { load, add, like, del, comment } from './reducers/blogs.js';
 import { notify } from './reducers/notification.js';
 import './App.css';
 import LoggedIn from './components/LoggedIn';
@@ -82,6 +82,14 @@ const App = () => {
                 }
             });
     };
+    const addComment = (event) => {
+        const blogId = event.target.dataset.blogId;
+        const commentField = event.target.comment;
+        const content = commentField.value;
+        commentField.value = '';
+        dispatch(comment(blogId, content));
+        event.preventDefault();
+    };
 
     return <>
         <Toast msg={notification} cls={cls} />
@@ -91,7 +99,8 @@ const App = () => {
             logOut={logOut}
             addBlog={addBlog}
             likeBlog={likeBlog}
-            deleteBlog={deleteBlog} />}
+            deleteBlog={deleteBlog}
+            addComment={addComment} />}
     </>;
 };
 

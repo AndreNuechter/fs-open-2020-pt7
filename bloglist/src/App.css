@@ -1,9 +1,22 @@
+:root {
+    --padding: 12px 16px;
+}
+
+#root {
+    text-align: center;
+}
+
 body {
     margin: 40px 16px;
 }
 
 button {
     display: block;
+    margin: 0 auto;
+    padding: var(--padding);
+    border-radius: 5px;
+    border: 0;
+    background: lightgrey;
 }
 
 label {
@@ -14,11 +27,13 @@ label {
 
 table {
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 th,
 td {
     border: 1px solid black;
+    padding: var(--padding);
 }
 
 td {
@@ -29,10 +44,22 @@ nav {
     background-color: aqua;
     display: flex;
     justify-content: space-between;
+    padding: var(--padding);
+    margin-bottom: 16px;
+    width: calc(100% + 16px);
+    transform: translateX(-30px);
+}
+
+nav a {
+    color: black;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 2px 12px;
 }
 
 nav button {
     display: inline;
+    margin-left: 16px;
 }
 
 .toast {
@@ -59,17 +86,34 @@ nav button {
 }
 
 .blog {
-    border: 1px solid black;
-    padding: 4px 8px;
-    margin-top: 4px;
+    border-bottom: 1px solid black;
+}
+
+.blog:last-child {
+    border-bottom: 0;
 }
 
 .blog a {
     display: block;
 }
 
+.blog,
+.blog__details {
+    max-width: 480px;
+    padding: var(--padding);
+    margin: 0 auto;
+}
+
+.blog__details {
+    border: 1px solid black;
+}
+
 .blog__likes,
 .blog__user-details {
     display: flex;
     justify-content: space-between;
+}
+
+.comment-form {
+    flex-direction: column;
 }

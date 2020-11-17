@@ -13,7 +13,7 @@ const padding = {
     paddingRight: 5
 };
 
-const LoggedIn = ({ user, logOut, addBlog, likeBlog, deleteBlog, getRef }) => <Router>
+const LoggedIn = ({ user, logOut, addBlog, likeBlog, deleteBlog, getRef, addComment }) => <Router>
     <nav>
         <span className="nav-links">
             <Link to='/' style={padding}>Blogs</Link>
@@ -33,7 +33,7 @@ const LoggedIn = ({ user, logOut, addBlog, likeBlog, deleteBlog, getRef }) => <R
             <UsersList />
         </Route>
         <Route path="/blogs/:id">
-            <BlogDetails user={user} addBlog={addBlog} likeBlog={likeBlog} deleteBlog={deleteBlog} />
+            <BlogDetails user={user} addBlog={addBlog} likeBlog={likeBlog} deleteBlog={deleteBlog} addComment={addComment} />
         </Route>
         <Route path="/">
             <BlogArea getRef={getRef} user={user} addBlog={addBlog} likeBlog={likeBlog} deleteBlog={deleteBlog} />

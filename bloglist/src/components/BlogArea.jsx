@@ -6,6 +6,7 @@ import Togglable from './Togglable';
 
 const BlogArea = (({ getRef, user, addBlog, likeBlog, deleteBlog }) => {
     return <>
+        <h2>Blogs</h2>
         <Togglable labelOpen="Create Blog" ref={getRef()}>
             <BlogCreationForm token={user.token} addBlog={addBlog} />
         </Togglable>

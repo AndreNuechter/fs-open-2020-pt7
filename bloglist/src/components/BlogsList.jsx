@@ -6,14 +6,11 @@ import Blog from './BlogListItem';
 const BlogsList = ({ user, likeBlog, deleteBlog }) => {
     const blogs = useSelector(({ blogs }) => blogs);
 
-    return <>
-        <h2>Blogs</h2>
-        <ul className="blogs-list">
-            {blogs.slice().sort((a, b) => b.likes - a.likes).map(blog =>
-                <Blog key={blog.id} blog={blog} likeBlog={likeBlog} deleteBlog={deleteBlog} user={user} />
-            )}
-        </ul>
-    </>;
+    return <ul className="blogs-list">
+        {blogs.slice().sort((a, b) => b.likes - a.likes).map(blog =>
+            <Blog key={blog.id} blog={blog} likeBlog={likeBlog} deleteBlog={deleteBlog} user={user} />
+        )}
+    </ul>;
 };
 
 BlogsList.propTypes = {
