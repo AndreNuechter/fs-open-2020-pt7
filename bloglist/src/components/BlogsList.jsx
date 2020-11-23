@@ -7,7 +7,7 @@ import List from './styled/List';
 const BlogsList = ({ user, likeBlog, deleteBlog }) => {
     const blogs = useSelector(({ blogs }) => blogs);
 
-    return <List>
+    return <List className="blogs-list">
         {blogs.slice().sort((a, b) => b.likes - a.likes).map(blog =>
             <Blog key={blog.id} blog={blog} likeBlog={likeBlog} deleteBlog={deleteBlog} user={user} />
         )}

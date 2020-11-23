@@ -50,36 +50,6 @@ describe('Blog app...', function() {
             cy.get('.blogs-list').children().contains(testBlog.title);
         });
 
-        describe('and there\'s a blog in the blogs list...', () => {
-            beforeEach(() => {
-                cy.addBlog(testBlog);
-            });
-
-            it('the user can like it', () => {
-                cy.contains('Show details').click();
-                cy.get('.blog__like-btn').click();
-                cy.get('.blog__likes').contains(testBlog.likes + 1);
-            });
-
-            it('the user can delete it', () => {
-                cy.contains('Show details').click();
-                cy.get('.blog__deletion-btn').click();
-                cy.get('.blogs-list').should('be.empty');
-            });
-
-            it('a user other than the creator cannot delete it', () => {
-                const wrongUser = { ...testUser, username: 'wrong_user' };
-                cy.request('POST', 'http://localhost:3001/api/users', wrongUser);
-                cy.request('POST', 'http://localhost:3001/api/login', wrongUser)
-                    .then(response => {
-                        localStorage.setItem('user', JSON.stringify(response.body));
-                        cy.visit('http://localhost:3000');
-                        cy.contains('Show details').click();
-                        cy.get('.blog__deletion-btn').should('not.be.visible');
-                    });
-            });
-        });
-
         describe('and there\'re multiple blogs...', () => {
             beforeEach(() => {
                 cy.addBlog(testBlog);
