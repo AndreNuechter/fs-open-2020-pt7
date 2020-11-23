@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './styled/Button';
+import Label from './styled/Label';
 
 const LoginForm = ({ logIn }) => <form onSubmit={logIn} className="login-form">
     <h2>Login</h2>
-    <label>
+    <Label>
         <span>Username:</span>
         <input name="username" />
-    </label>
-    <label>
+    </Label>
+    <Label>
         <span>Password:</span>
         <input name="password" type="password" />
-    </label>
-    <button className="login-form__submit-btn">Log In</button>
+    </Label>
+    <Button className="login-form__submit-btn">Log In</Button>
 </form>;
 
 LoginForm.propTypes = {

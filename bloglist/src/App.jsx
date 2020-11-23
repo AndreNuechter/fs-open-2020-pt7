@@ -58,7 +58,7 @@ const App = () => {
         event.preventDefault();
     };
     const likeBlog = ({ target }) => {
-        const { id } = target.closest('.blog').dataset;
+        const { id } = target.closest('.blog__details').dataset;
         target.disabled = true;
         dispatch(like(id))
             .then(() => {
@@ -86,9 +86,16 @@ const App = () => {
         const blogId = event.target.dataset.blogId;
         const commentField = event.target.comment;
         const content = commentField.value;
+
+        event.preventDefault();
+
+        if (!content) {
+            setToast('No empty comments allowed', 'error');
+            return;
+        }
+
         commentField.value = '';
         dispatch(comment(blogId, content));
-        event.preventDefault();
     };
 
     return <>
